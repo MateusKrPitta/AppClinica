@@ -1,0 +1,36 @@
+name: fisioterapia
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+  google_fonts: ^5.0.0
+  font_awesome_flutter: ^10.5.0
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+  # Adicionando as imagens como assets
+  assets:
+    - assets/images/backgroundLogin.png
+    - assets/images/logo.png
+    - assets/icons/relatorio.png
+
+  # Adicionando fontes personalizadas
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf
+          weight: 700
