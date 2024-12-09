@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fisioterapia/components/Drawer/custom_drawer.dart';
 import 'package:fisioterapia/components/button/custom_buttom.dart';
+import 'patient_detail.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,7 +11,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> pacientes = ["Paciente 1", "Paciente 2", "Paciente 3", "Paciente 4", "Paciente 5"];
+  List<String> pacientes = [
+    "Paciente 1",
+    "Paciente 2",
+    "Paciente 3",
+    "Paciente 4",
+    "Paciente 5"
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -39,14 +46,26 @@ class _HomePageState extends State<HomePage> {
           },
         ),
       ),
-      drawer: CustomDrawer(
-        iconColor: const Color(0xFF6c95c6),
+      drawer: const CustomDrawer(
+        iconColor: Color(0xFF6c95c6),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(height: 20),
+            Container(
+              margin: const EdgeInsets.only(
+                  bottom: 30, left: 20), // Margem inferior e alinhamento
+              child: const Text(
+                'Seja bem-vindo, Mateus',
+                style: TextStyle(
+                  color: Color(0xFF6c95c6),
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -101,7 +120,8 @@ class _HomePageState extends State<HomePage> {
                             hintText: 'Pesquisar paciente',
                             filled: true,
                             fillColor: Colors.white,
-                            prefixIcon: Icon(Icons.search, color: Color(0xFF6c95c6)),
+                            prefixIcon:
+                                Icon(Icons.search, color: Color(0xFF6c95c6)),
                             hintStyle: TextStyle(color: Color(0xFF6c95c6)),
                           ),
                         ),
@@ -112,14 +132,17 @@ class _HomePageState extends State<HomePage> {
                           itemCount: pacientes.length,
                           itemBuilder: (context, index) {
                             return Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20.0, vertical: 5.0),
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: ListTile(
-                                  leading: const Icon(Icons.person, color: Color(0xFF6c95c6)), // Ícone de pessoa
+                                  leading: const Icon(Icons.person,
+                                      color:
+                                          Color(0xFF6c95c6)), // Ícone de pessoa
                                   title: Text(
                                     pacientes[index],
                                     style: const TextStyle(
@@ -129,10 +152,18 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                   trailing: IconButton(
-                                    icon: const Icon(Icons.arrow_forward, color: Color(0xFF6c95c6)),
+                                    icon: const Icon(Icons.arrow_forward,
+                                        color: Color(0xFF6c95c6)),
                                     onPressed: () {
-                                      // Função para ir para próxima tela
-                                      print('Selecionado: ${pacientes[index]}');
+                                      // Navegar para a tela de detalhes com as informações do paciente
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              PatientDetailPage(
+                                                  paciente: pacientes[index]),
+                                        ),
+                                      );
                                     },
                                   ),
                                 ),
